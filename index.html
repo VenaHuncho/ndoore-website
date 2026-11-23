@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,12 @@
   <title>NDOORE</title>
   <meta name="description" content="NDOORE — Official website.">
   <meta name="theme-color" content="#000000">
+
+  <!-- Font Awesome for social icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
 
   <style>
     * {
@@ -36,7 +43,10 @@
       background: #000;
     }
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
+
     header {
       position: absolute;
       top: 0;
@@ -74,7 +84,11 @@
       opacity: 0.5;
     }
 
-    /* CENTER WORDMARK */
+
+    /* =========================
+       CENTER WORDMARK
+    ========================= */
+
     .hero {
       position: absolute;
       inset: 0;
@@ -92,20 +106,24 @@
       padding-right: 0.08em;
     }
 
-    /* OO FACE */
+
+    /* =========================
+       OO FACE
+    ========================= */
+
     .face {
       position: relative;
       display: inline-block;
     }
 
-    /* EYES */
     .eyes {
       display: inline-block;
       transform-origin: center;
       animation: blink 7s 3s infinite;
     }
 
-    /* PERMANENT SUBTLE SMILE */
+    /* Permanent subtle smile */
+
     .smile {
       position: absolute;
       left: 37%;
@@ -117,7 +135,8 @@
       pointer-events: none;
     }
 
-    /* BLINK */
+    /* Blink */
+
     @keyframes blink {
       0%, 94%, 100% {
         transform: scaleY(1);
@@ -132,7 +151,11 @@
       }
     }
 
-    /* FOOTER */
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
       position: absolute;
       bottom: 0;
@@ -140,35 +163,51 @@
       width: 100%;
       padding: 25px 5%;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
+      gap: 20px;
       z-index: 2;
     }
 
-    footer a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 1px;
-      transition: color 0.3s;
-    }
-
-    footer a:hover {
-      color: white;
-    }
+    /* SOCIAL ICONS */
 
     .socials {
       display: flex;
-      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
     }
+
+    .socials a {
+      color: white;
+      text-decoration: none;
+      font-size: 25px;
+      transition:
+        opacity 0.3s,
+        transform 0.3s;
+    }
+
+    .socials a:hover {
+      opacity: 0.55;
+      transform: translateY(-2px);
+    }
+
+    /* COPYRIGHT */
 
     .copyright {
-      color: #666;
+      color: #aaa;
       font-size: 11px;
+      letter-spacing: 1px;
+      text-align: center;
     }
 
-    /* MOBILE */
+
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 600px) {
+
       header {
         padding: 24px 6%;
       }
@@ -192,10 +231,15 @@
 
       footer {
         padding: 20px 6%;
+        gap: 17px;
       }
 
       .socials {
-        gap: 14px;
+        gap: 22px;
+      }
+
+      .socials a {
+        font-size: 22px;
       }
 
       .copyright {
@@ -203,7 +247,35 @@
       }
     }
 
-    /* REDUCED MOTION ACCESSIBILITY */
+
+    /* =========================
+       VERY SMALL PHONES
+    ========================= */
+
+    @media (max-width: 380px) {
+
+      .socials {
+        gap: 17px;
+      }
+
+      .socials a {
+        font-size: 20px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+    }
+
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
     @media (prefers-reduced-motion: reduce) {
       .eyes {
         animation: none;
@@ -212,35 +284,157 @@
   </style>
 </head>
 
+
 <body>
-  <main class="home">
 
-    <header>
-      <a class="logo" href="#">NDOORE</a>
+<main class="home">
 
-      <nav>
-        <a href="#">MUSIC</a>
-        <a href="#">VIDEOS</a>
-      </nav>
-    </header>
 
-    <section class="hero">
-      <h1 class="artist-name">
-        ND<span class="face"><span class="eyes">OO</span><span class="smile"></span></span>RE
-      </h1>
-    </section>
+  <!-- =========================
+       HEADER
+  ========================= -->
 
-    <footer>
-      <div class="socials">
-        <a href="#" target="_blank">INSTAGRAM</a>
-        <a href="#" target="_blank">YOUTUBE</a>
-      </div>
+  <header>
 
-      <div class="copyright">
-        © NDOORE
-      </div>
-    </footer>
+    <a class="logo" href="#">NDOORE</a>
 
-  </main>
+    <nav>
+
+      <!-- CHANGE YOUR PRE-SAVE LINK HERE -->
+      <a
+        href="https://YOUR-PRE-SAVE-LINK-HERE.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        PRE-SAVE
+      </a>
+
+      <!-- BOOKING EMAIL -->
+      <a href="mailto:book@ndoore.com">
+        BOOK
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================
+       CENTER WORDMARK
+  ========================= -->
+
+  <section class="hero">
+
+    <h1 class="artist-name">
+
+      ND<span class="face">
+        <span class="eyes">OO</span>
+        <span class="smile"></span>
+      </span>RE
+
+    </h1>
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="socials">
+
+      <!-- INSTAGRAM -->
+      <a
+        href="https://instagram.com/YOUR-INSTAGRAM"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+
+      <!-- X -->
+      <a
+        href="https://x.com/YOUR-X"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="X"
+      >
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+
+
+      <!-- YOUTUBE -->
+      <a
+        href="https://youtube.com/@YOUR-YOUTUBE"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+      >
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+
+      <!-- SPOTIFY -->
+      <a
+        href="https://open.spotify.com/artist/YOUR-SPOTIFY-ID"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Spotify"
+      >
+        <i class="fa-brands fa-spotify"></i>
+      </a>
+
+
+      <!-- APPLE MUSIC -->
+      <a
+        href="https://music.apple.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Apple Music"
+      >
+        <i class="fa-brands fa-apple"></i>
+      </a>
+
+
+      <!-- SOUNDCLOUD -->
+      <a
+        href="https://soundcloud.com/YOUR-SOUNDCLOUD"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="SoundCloud"
+      >
+        <i class="fa-brands fa-soundcloud"></i>
+      </a>
+
+
+      <!-- TIKTOK -->
+      <a
+        href="https://www.tiktok.com/@YOUR-TIKTOK"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+      >
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+
+    </div>
+
+
+    <!-- COPYRIGHT ONLY -->
+    <div class="copyright">
+      © NDOORE
+    </div>
+
+  </footer>
+
+</main>
+
 </body>
 </html>
+```
