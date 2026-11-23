@@ -92,29 +92,32 @@
       padding-right: 0.08em;
     }
 
-    /* OO EYES */
-    .eyes {
+    /* OO FACE */
+    .face {
       position: relative;
       display: inline-block;
-      transform-origin: center;
-      animation: blink 6s 3s infinite;
     }
 
-    /* TEMPORARY SMILE */
+    /* EYES */
+    .eyes {
+      display: inline-block;
+      transform-origin: center;
+      animation: blink 7s 3s infinite;
+    }
+
+    /* PERMANENT SUBTLE SMILE */
     .smile {
       position: absolute;
-      left: 35%;
-      bottom: -0.10em;
-      width: 30%;
-      height: 0.13em;
-      border-bottom: 0.035em solid white;
+      left: 37%;
+      bottom: -0.12em;
+      width: 26%;
+      height: 0.08em;
+      border-bottom: 0.025em solid white;
       border-radius: 0 0 50% 50%;
-      opacity: 0;
       pointer-events: none;
-      animation: smile 6s 3s infinite;
     }
 
-    /* BLINK TIMING */
+    /* BLINK */
     @keyframes blink {
       0%, 94%, 100% {
         transform: scaleY(1);
@@ -126,17 +129,6 @@
 
       98% {
         transform: scaleY(1);
-      }
-    }
-
-    /* SMILE ONLY DURING BLINK */
-    @keyframes smile {
-      0%, 95.5%, 98.5%, 100% {
-        opacity: 0;
-      }
-
-      96%, 98% {
-        opacity: 1;
       }
     }
 
@@ -213,7 +205,7 @@
 
     /* REDUCED MOTION ACCESSIBILITY */
     @media (prefers-reduced-motion: reduce) {
-      .eyes, .smile {
+      .eyes {
         animation: none;
       }
     }
@@ -234,7 +226,7 @@
 
     <section class="hero">
       <h1 class="artist-name">
-        ND<span class="eyes">OO<span class="smile"></span></span>RE
+        ND<span class="face"><span class="eyes">OO</span><span class="smile"></span></span>RE
       </h1>
     </section>
 
