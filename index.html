@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>NDOORE</title>
   <meta name="description" content="NDOORE — Official website.">
   <meta name="theme-color" content="#000000">
@@ -32,12 +33,10 @@
       height: 100vh;
       height: 100dvh;
       overflow: hidden;
-      background:
-        radial-gradient(ellipse at 70% 45%, #292929 0%, transparent 48%),
-        linear-gradient(135deg, #080808, #151515 55%, #000);
+      background: #000;
     }
 
-    /* Header */
+    /* HEADER */
     header {
       position: absolute;
       top: 0;
@@ -51,11 +50,11 @@
     }
 
     .logo {
+      color: white;
+      text-decoration: none;
       font-size: 25px;
       font-weight: 900;
       letter-spacing: 2px;
-      color: white;
-      text-decoration: none;
     }
 
     nav {
@@ -75,7 +74,7 @@
       opacity: 0.5;
     }
 
-    /* Main artist name */
+    /* CENTER WORDMARK */
     .hero {
       position: absolute;
       inset: 0;
@@ -93,7 +92,55 @@
       padding-right: 0.08em;
     }
 
-    /* Footer */
+    /* OO EYES */
+    .eyes {
+      position: relative;
+      display: inline-block;
+      transform-origin: center;
+      animation: blink 6s 3s infinite;
+    }
+
+    /* TEMPORARY SMILE */
+    .smile {
+      position: absolute;
+      left: 35%;
+      bottom: -0.10em;
+      width: 30%;
+      height: 0.13em;
+      border-bottom: 0.035em solid white;
+      border-radius: 0 0 50% 50%;
+      opacity: 0;
+      pointer-events: none;
+      animation: smile 6s 3s infinite;
+    }
+
+    /* BLINK TIMING */
+    @keyframes blink {
+      0%, 94%, 100% {
+        transform: scaleY(1);
+      }
+
+      96% {
+        transform: scaleY(0.08);
+      }
+
+      98% {
+        transform: scaleY(1);
+      }
+    }
+
+    /* SMILE ONLY DURING BLINK */
+    @keyframes smile {
+      0%, 95.5%, 98.5%, 100% {
+        opacity: 0;
+      }
+
+      96%, 98% {
+        opacity: 1;
+      }
+    }
+
+    /* FOOTER */
     footer {
       position: absolute;
       bottom: 0;
@@ -111,6 +158,7 @@
       text-decoration: none;
       font-size: 11px;
       letter-spacing: 1px;
+      transition: color 0.3s;
     }
 
     footer a:hover {
@@ -127,7 +175,7 @@
       font-size: 11px;
     }
 
-    /* Mobile */
+    /* MOBILE */
     @media (max-width: 600px) {
       header {
         padding: 24px 6%;
@@ -162,6 +210,13 @@
         font-size: 9px;
       }
     }
+
+    /* REDUCED MOTION ACCESSIBILITY */
+    @media (prefers-reduced-motion: reduce) {
+      .eyes, .smile {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -178,7 +233,9 @@
     </header>
 
     <section class="hero">
-      <h1 class="artist-name">NDOORE</h1>
+      <h1 class="artist-name">
+        ND<span class="eyes">OO<span class="smile"></span></span>RE
+      </h1>
     </section>
 
     <footer>
