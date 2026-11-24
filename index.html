@@ -16,18 +16,27 @@
 
   <style>
 
+    /* =========================
+       RESET
+    ========================= */
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+
+    /* =========================
+       PAGE
+    ========================= */
+
     html {
       width: 100%;
       height: 100%;
       background: #000;
 
-      /* ENABLE MOBILE PULL-TO-REFRESH / OVERSCROLL */
+      /* Allow normal mobile pull-to-refresh */
       overscroll-behavior-y: auto;
     }
 
@@ -35,22 +44,23 @@
     body {
       width: 100%;
       min-height: 100%;
+
       background: #000;
       color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
     }
 
     body {
-
-      /*
-       * The website remains a full-screen experience,
-       * but the browser is allowed to perform its normal
-       * pull-to-refresh gesture.
-       */
       overflow-x: hidden;
       overflow-y: auto;
 
+      /* Allow browser pull-to-refresh */
       overscroll-behavior-y: auto;
+
       -webkit-overflow-scrolling: touch;
     }
 
@@ -61,6 +71,7 @@
 
     .home {
       position: relative;
+
       width: 100%;
       min-height: 100vh;
       min-height: 100dvh;
@@ -77,6 +88,7 @@
 
     header {
       position: absolute;
+
       top: 0;
       left: 0;
 
@@ -85,6 +97,7 @@
       padding: 30px 5%;
 
       display: flex;
+
       justify-content: space-between;
       align-items: center;
 
@@ -95,28 +108,33 @@
     /* LOGO */
 
     .logo {
-      color: white;
+      color: #fff;
+
       text-decoration: none;
 
       font-size: 25px;
+
       font-weight: 900;
 
       letter-spacing: 2px;
     }
 
 
-    /* NAVIGATION */
+    /* NAV */
 
     nav {
       display: flex;
+
       gap: 35px;
     }
 
     nav a {
-      color: white;
+      color: #fff;
+
       text-decoration: none;
 
       font-size: 12px;
+
       letter-spacing: 3px;
 
       transition: opacity 0.3s;
@@ -140,6 +158,7 @@
       bottom: 0;
 
       display: flex;
+
       justify-content: center;
       align-items: center;
     }
@@ -165,6 +184,7 @@
 
     .face {
       position: relative;
+
       display: inline-block;
     }
 
@@ -180,7 +200,7 @@
     }
 
 
-    /* SUBTLE SMILE */
+    /* SMILE */
 
     .smile {
       position: absolute;
@@ -236,6 +256,7 @@
       padding: 22px 5% 25px;
 
       display: flex;
+
       flex-direction: column;
 
       align-items: center;
@@ -279,10 +300,10 @@
     }
 
 
-    /* ALL ICON LINKS */
+    /* ICON LINKS */
 
     .icon-row a {
-      color: white;
+      color: #fff;
 
       text-decoration: none;
 
@@ -308,15 +329,10 @@
     }
 
 
-    /* =========================
-       CUSTOM MUSIC PLATFORM ICONS
-    ========================= */
-
-
-    /*
-     * BOOMPLAY
-     * Simple B-shaped platform mark.
-     */
+    /* ==================================================
+       BOOMPLAY
+       Simple B mark
+    ================================================== */
 
     .boomplay-icon {
       font-family: Arial, Helvetica, sans-serif;
@@ -329,80 +345,63 @@
     }
 
 
-    /*
-     * YOUTUBE MUSIC
-     * Hexagon with play button.
-     */
+    /* ==================================================
+       YOUTUBE MUSIC
+       WHITE CIRCLE + PLAY BUTTON
+    ================================================== */
 
     .youtube-music-icon {
       position: relative;
 
-      width: 21px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
 
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      font-size: 8px;
+      border: 2px solid #fff;
 
-      font-weight: bold;
+      border-radius: 50%;
     }
 
-    .youtube-music-icon::before {
+    .youtube-music-icon::after {
       content: "";
 
-      position: absolute;
+      width: 0;
+      height: 0;
 
-      width: 21px;
-      height: 21px;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 6px solid #fff;
 
-      border: 2px solid white;
-
-      clip-path: polygon(
-        25% 3%,
-        75% 3%,
-        100% 50%,
-        75% 97%,
-        25% 97%,
-        0% 50%
-      );
-    }
-
-    .youtube-music-icon i {
-      position: relative;
-
-      z-index: 1;
-
-      font-size: 7px;
-
-      margin-left: 1px;
+      margin-left: 2px;
     }
 
 
-    /*
-     * MDUNDO
-     * Download-style icon.
-     */
+    /* ==================================================
+       MDUNDO
+       DOWNLOAD ICON
+    ================================================== */
 
     .mdundo-icon {
-      font-size: 21px;
+      font-size: 20px;
     }
 
 
-    /*
-     * AUDIOMACK
-     * Music-wave / player style.
-     */
+    /* ==================================================
+       AUDIOMACK
+       THIN → THICK FLOWING MUSIC WAVE
+    ================================================== */
 
     .audiomack-icon {
       position: relative;
 
       width: 25px;
-      height: 22px;
+      height: 23px;
 
-      display: flex;
+      display: inline-flex;
 
       align-items: center;
       justify-content: center;
@@ -410,50 +409,92 @@
       overflow: hidden;
     }
 
-    .audiomack-icon span {
+    .audiomack-wave {
+      position: relative;
+
+      width: 23px;
+      height: 19px;
+
+      display: block;
+    }
+
+    /*
+     * The individual curved pieces create
+     * a small flowing wave that becomes
+     * thicker toward the head.
+     */
+
+    .wave-line {
+      position: absolute;
+
       display: block;
 
-      width: 3px;
+      height: 2px;
 
-      margin: 0 1px;
+      background: #fff;
 
-      background: white;
+      border-radius: 100px;
 
-      border-radius: 3px;
+      transform-origin: left center;
     }
 
-    .audiomack-icon span:nth-child(1) {
-      height: 8px;
+    .wave-line:nth-child(1) {
+      width: 7px;
+
+      left: 0;
+      top: 10px;
+
+      transform: rotate(-12deg);
     }
 
-    .audiomack-icon span:nth-child(2) {
-      height: 14px;
+    .wave-line:nth-child(2) {
+      width: 10px;
+
+      left: 4px;
+      top: 9px;
+
+      height: 2px;
+
+      transform: rotate(-18deg);
     }
 
-    .audiomack-icon span:nth-child(3) {
-      height: 20px;
+    .wave-line:nth-child(3) {
+      width: 13px;
+
+      left: 7px;
+      top: 7px;
+
+      height: 3px;
+
+      transform: rotate(-22deg);
     }
 
-    .audiomack-icon span:nth-child(4) {
-      height: 16px;
+    .wave-line:nth-child(4) {
+      width: 15px;
+
+      left: 9px;
+      top: 5px;
+
+      height: 4px;
+
+      transform: rotate(-27deg);
     }
 
-    .audiomack-icon span:nth-child(5) {
-      height: 10px;
+    .wave-line:nth-child(5) {
+      width: 11px;
+
+      left: 12px;
+      top: 3px;
+
+      height: 5px;
+
+      transform: rotate(-32deg);
     }
 
-    .audiomack-icon span:nth-child(6) {
-      height: 18px;
-    }
 
-    .audiomack-icon span:nth-child(7) {
-      height: 12px;
-    }
-
-
-    /* =========================
+    /* ==================================================
        COPYRIGHT
-    ========================= */
+    ================================================== */
 
     .copyright {
       color: #555;
@@ -505,10 +546,10 @@
       }
 
       .icon-row a {
-        font-size: 18px;
-
         width: 22px;
         height: 22px;
+
+        font-size: 18px;
       }
 
       .boomplay-icon {
@@ -516,7 +557,8 @@
       }
 
       .youtube-music-icon {
-        transform: scale(0.9);
+        width: 20px;
+        height: 20px;
       }
 
       .row-label {
@@ -540,14 +582,21 @@
       }
 
       .icon-row a {
-        font-size: 16px;
-
         width: 20px;
         height: 20px;
+
+        font-size: 16px;
       }
 
       .boomplay-icon {
         font-size: 18px;
+      }
+
+      .youtube-music-icon {
+        width: 18px;
+        height: 18px;
+
+        border-width: 1.5px;
       }
 
       nav {
@@ -571,10 +620,10 @@
       }
 
       .icon-row a {
-        font-size: 14px;
-
         width: 18px;
         height: 18px;
+
+        font-size: 14px;
       }
 
       .boomplay-icon {
@@ -617,7 +666,7 @@
     <nav>
 
       <!--
-        CHANGE THIS ONE LINK WHENEVER
+        CHANGE THIS LINK WHENEVER
         YOU HAVE A NEW PRE-SAVE LINK
       -->
 
@@ -674,7 +723,7 @@
 
 
     <!-- =========================
-         MUSIC
+         MUSIC PLATFORMS
     ========================= -->
 
     <div class="row-label">
@@ -706,9 +755,11 @@
         rel="noopener noreferrer"
         aria-label="Boomplay"
       >
+
         <span class="boomplay-icon">
           B
         </span>
+
       </a>
 
 
@@ -722,11 +773,7 @@
         aria-label="YouTube Music"
       >
 
-        <span class="youtube-music-icon">
-
-          <i class="fa-solid fa-play"></i>
-
-        </span>
+        <span class="youtube-music-icon"></span>
 
       </a>
 
@@ -740,7 +787,9 @@
         rel="noopener noreferrer"
         aria-label="YouTube"
       >
+
         <i class="fa-brands fa-youtube"></i>
+
       </a>
 
 
@@ -801,13 +850,15 @@
 
         <span class="audiomack-icon">
 
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="audiomack-wave">
+
+            <span class="wave-line"></span>
+            <span class="wave-line"></span>
+            <span class="wave-line"></span>
+            <span class="wave-line"></span>
+            <span class="wave-line"></span>
+
+          </span>
 
         </span>
 
@@ -848,7 +899,7 @@
 
 
     <!-- =========================
-         SOCIAL
+         SOCIAL PLATFORMS
     ========================= -->
 
     <div class="row-label">
@@ -907,7 +958,7 @@
       <!-- TIKTOK -->
 
       <a
-        href="https://www.tiktok.com/@iamndoore"
+        href="https://www.tiktok.com/@ndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="TikTok"
