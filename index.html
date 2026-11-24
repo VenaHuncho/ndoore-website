@@ -15,30 +15,58 @@
   >
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
       width: 100%;
       height: 100%;
+      background: #000;
+
+      /* ENABLE MOBILE PULL-TO-REFRESH / OVERSCROLL */
+      overscroll-behavior-y: auto;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
       background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      overflow: hidden;
+
+      /*
+       * The website remains a full-screen experience,
+       * but the browser is allowed to perform its normal
+       * pull-to-refresh gesture.
+       */
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      overscroll-behavior-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
+
+
+    /* =========================
+       MAIN HOME
+    ========================= */
 
     .home {
       position: relative;
       width: 100%;
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
+
       overflow: hidden;
+
       background: #000;
     }
 
@@ -51,21 +79,33 @@
       position: absolute;
       top: 0;
       left: 0;
+
       width: 100%;
+
       padding: 30px 5%;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       z-index: 2;
     }
+
+
+    /* LOGO */
 
     .logo {
       color: white;
       text-decoration: none;
+
       font-size: 25px;
       font-weight: 900;
+
       letter-spacing: 2px;
     }
+
+
+    /* NAVIGATION */
 
     nav {
       display: flex;
@@ -75,8 +115,10 @@
     nav a {
       color: white;
       text-decoration: none;
+
       font-size: 12px;
       letter-spacing: 3px;
+
       transition: opacity 0.3s;
     }
 
@@ -91,7 +133,12 @@
 
     .hero {
       position: absolute;
-      inset: 0;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -99,10 +146,15 @@
 
     .artist-name {
       font-size: clamp(70px, 17vw, 230px);
+
       font-weight: 900;
+
       letter-spacing: -0.08em;
+
       line-height: 1;
+
       text-align: center;
+
       padding-right: 0.08em;
     }
 
@@ -116,20 +168,33 @@
       display: inline-block;
     }
 
+
+    /* EYES */
+
     .eyes {
       display: inline-block;
+
       transform-origin: center;
+
       animation: blink 7s 3s infinite;
     }
 
+
+    /* SUBTLE SMILE */
+
     .smile {
       position: absolute;
+
       left: 37%;
       bottom: -0.12em;
+
       width: 26%;
       height: 0.08em;
+
       border-bottom: 0.025em solid white;
+
       border-radius: 0 0 50% 50%;
+
       pointer-events: none;
     }
 
@@ -139,7 +204,10 @@
     ========================= */
 
     @keyframes blink {
-      0%, 94%, 100% {
+
+      0%,
+      94%,
+      100% {
         transform: scaleY(1);
       }
 
@@ -159,37 +227,75 @@
 
     footer {
       position: absolute;
+
       bottom: 0;
       left: 0;
+
       width: 100%;
+
       padding: 22px 5% 25px;
+
       display: flex;
       flex-direction: column;
+
       align-items: center;
+
       gap: 15px;
+
       z-index: 2;
     }
 
 
     /* =========================
-       ICON ROWS
+       ROW LABEL
+    ========================= */
+
+    .row-label {
+      color: #555;
+
+      font-size: 8px;
+
+      letter-spacing: 2px;
+
+      text-align: center;
+
+      margin-bottom: -7px;
+    }
+
+
+    /* =========================
+       ICON ROW
     ========================= */
 
     .icon-row {
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       flex-wrap: nowrap;
+
       gap: 25px;
     }
 
+
+    /* ALL ICON LINKS */
+
     .icon-row a {
       color: white;
+
       text-decoration: none;
+
+      width: 25px;
+      height: 25px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-size: 21px;
+
       transition:
         opacity 0.3s,
         transform 0.3s;
@@ -197,18 +303,151 @@
 
     .icon-row a:hover {
       opacity: 0.5;
+
       transform: translateY(-2px);
     }
 
 
-    /* MUSIC + SOCIAL LABELS */
+    /* =========================
+       CUSTOM MUSIC PLATFORM ICONS
+    ========================= */
 
-    .row-label {
-      color: #555;
+
+    /*
+     * BOOMPLAY
+     * Simple B-shaped platform mark.
+     */
+
+    .boomplay-icon {
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 23px;
+
+      font-weight: 900;
+
+      line-height: 1;
+    }
+
+
+    /*
+     * YOUTUBE MUSIC
+     * Hexagon with play button.
+     */
+
+    .youtube-music-icon {
+      position: relative;
+
+      width: 21px;
+      height: 24px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
       font-size: 8px;
-      letter-spacing: 2px;
-      text-align: center;
-      margin-bottom: -7px;
+
+      font-weight: bold;
+    }
+
+    .youtube-music-icon::before {
+      content: "";
+
+      position: absolute;
+
+      width: 21px;
+      height: 21px;
+
+      border: 2px solid white;
+
+      clip-path: polygon(
+        25% 3%,
+        75% 3%,
+        100% 50%,
+        75% 97%,
+        25% 97%,
+        0% 50%
+      );
+    }
+
+    .youtube-music-icon i {
+      position: relative;
+
+      z-index: 1;
+
+      font-size: 7px;
+
+      margin-left: 1px;
+    }
+
+
+    /*
+     * MDUNDO
+     * Download-style icon.
+     */
+
+    .mdundo-icon {
+      font-size: 21px;
+    }
+
+
+    /*
+     * AUDIOMACK
+     * Music-wave / player style.
+     */
+
+    .audiomack-icon {
+      position: relative;
+
+      width: 25px;
+      height: 22px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .audiomack-icon span {
+      display: block;
+
+      width: 3px;
+
+      margin: 0 1px;
+
+      background: white;
+
+      border-radius: 3px;
+    }
+
+    .audiomack-icon span:nth-child(1) {
+      height: 8px;
+    }
+
+    .audiomack-icon span:nth-child(2) {
+      height: 14px;
+    }
+
+    .audiomack-icon span:nth-child(3) {
+      height: 20px;
+    }
+
+    .audiomack-icon span:nth-child(4) {
+      height: 16px;
+    }
+
+    .audiomack-icon span:nth-child(5) {
+      height: 10px;
+    }
+
+    .audiomack-icon span:nth-child(6) {
+      height: 18px;
+    }
+
+    .audiomack-icon span:nth-child(7) {
+      height: 12px;
     }
 
 
@@ -218,8 +457,11 @@
 
     .copyright {
       color: #555;
+
       font-size: 10px;
+
       letter-spacing: 1px;
+
       margin-top: 2px;
     }
 
@@ -244,6 +486,7 @@
 
       nav a {
         font-size: 10px;
+
         letter-spacing: 1.5px;
       }
 
@@ -253,6 +496,7 @@
 
       footer {
         padding: 18px 5% 20px;
+
         gap: 13px;
       }
 
@@ -262,6 +506,17 @@
 
       .icon-row a {
         font-size: 18px;
+
+        width: 22px;
+        height: 22px;
+      }
+
+      .boomplay-icon {
+        font-size: 20px;
+      }
+
+      .youtube-music-icon {
+        transform: scale(0.9);
       }
 
       .row-label {
@@ -286,6 +541,13 @@
 
       .icon-row a {
         font-size: 16px;
+
+        width: 20px;
+        height: 20px;
+      }
+
+      .boomplay-icon {
+        font-size: 18px;
       }
 
       nav {
@@ -310,6 +572,13 @@
 
       .icon-row a {
         font-size: 14px;
+
+        width: 18px;
+        height: 18px;
+      }
+
+      .boomplay-icon {
+        font-size: 16px;
       }
     }
 
@@ -319,6 +588,7 @@
     ========================= */
 
     @media (prefers-reduced-motion: reduce) {
+
       .eyes {
         animation: none;
       }
@@ -343,9 +613,14 @@
       NDOORE
     </a>
 
+
     <nav>
 
-      <!-- CHANGE THIS LINK WHENEVER YOU HAVE A NEW PRE-SAVE -->
+      <!--
+        CHANGE THIS ONE LINK WHENEVER
+        YOU HAVE A NEW PRE-SAVE LINK
+      -->
+
       <a
         href="https://YOUR-PRE-SAVE-LINK-HERE"
         target="_blank"
@@ -354,7 +629,9 @@
         PRE-SAVE
       </a>
 
+
       <!-- BOOKING -->
+
       <a href="mailto:book@ndoore.com">
         BOOK
       </a>
@@ -366,7 +643,7 @@
 
 
   <!-- =========================
-       NDOORE WORDMARK
+       CENTER NDOORE WORDMARK
   ========================= -->
 
   <section class="hero">
@@ -374,8 +651,13 @@
     <h1 class="artist-name">
 
       ND<span class="face">
-        <span class="eyes">OO</span>
+
+        <span class="eyes">
+          OO
+        </span>
+
         <span class="smile"></span>
+
       </span>RE
 
     </h1>
@@ -391,16 +673,20 @@
   <footer>
 
 
-    <!-- MUSIC PLATFORMS -->
+    <!-- =========================
+         MUSIC
+    ========================= -->
 
     <div class="row-label">
       MUSIC
     </div>
 
+
     <div class="icon-row">
 
 
       <!-- SPOTIFY -->
+
       <a
         href="https://open.spotify.com/"
         target="_blank"
@@ -411,29 +697,43 @@
       </a>
 
 
+
       <!-- BOOMPLAY -->
+
       <a
         href="https://www.boomplay.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Boomplay"
       >
-        <i class="fa-solid fa-play"></i>
+        <span class="boomplay-icon">
+          B
+        </span>
       </a>
 
 
+
       <!-- YOUTUBE MUSIC -->
+
       <a
         href="https://music.youtube.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="YouTube Music"
       >
-        <i class="fa-brands fa-youtube"></i>
+
+        <span class="youtube-music-icon">
+
+          <i class="fa-solid fa-play"></i>
+
+        </span>
+
       </a>
 
 
+
       <!-- YOUTUBE -->
+
       <a
         href="https://youtube.com/"
         target="_blank"
@@ -444,136 +744,191 @@
       </a>
 
 
+
       <!-- MDUNDO -->
+
       <a
         href="https://mdundo.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Mdundo"
       >
-        <i class="fa-solid fa-music"></i>
+
+        <i class="fa-solid fa-download mdundo-icon"></i>
+
       </a>
 
 
+
       <!-- APPLE MUSIC -->
+
       <a
         href="https://music.apple.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Apple Music"
       >
+
         <i class="fa-brands fa-apple"></i>
+
       </a>
 
 
+
       <!-- AMAZON MUSIC -->
+
       <a
         href="https://music.amazon.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Amazon Music"
       >
+
         <i class="fa-brands fa-amazon"></i>
+
       </a>
 
 
+
       <!-- AUDIOMACK -->
+
       <a
         href="https://audiomack.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Audiomack"
       >
-        <i class="fa-solid fa-headphones"></i>
+
+        <span class="audiomack-icon">
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </span>
+
       </a>
 
 
+
       <!-- SOUNDCLOUD -->
+
       <a
         href="https://soundcloud.com/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="SoundCloud"
       >
+
         <i class="fa-brands fa-soundcloud"></i>
+
       </a>
 
 
+
       <!-- EVEN -->
+
       <a
-        href="https://even.biz/"
+        href="https://www.even.biz/artists/ndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="EVEN"
       >
+
         <i class="fa-solid fa-ticket"></i>
+
       </a>
 
     </div>
 
 
 
-    <!-- SOCIAL PLATFORMS -->
+    <!-- =========================
+         SOCIAL
+    ========================= -->
 
     <div class="row-label">
       SOCIAL
     </div>
 
+
     <div class="icon-row">
 
 
       <!-- FACEBOOK -->
+
       <a
         href="https://facebook.com/iamndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Facebook"
       >
+
         <i class="fa-brands fa-facebook-f"></i>
+
       </a>
 
 
+
       <!-- INSTAGRAM -->
+
       <a
         href="https://instagram.com/iamndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
       >
+
         <i class="fa-brands fa-instagram"></i>
+
       </a>
 
 
+
       <!-- X -->
+
       <a
         href="https://x.com/iamndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="X"
       >
+
         <i class="fa-brands fa-x-twitter"></i>
+
       </a>
 
 
+
       <!-- TIKTOK -->
+
       <a
         href="https://www.tiktok.com/@iamndoore"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="TikTok"
       >
+
         <i class="fa-brands fa-tiktok"></i>
+
       </a>
 
     </div>
 
 
 
-    <!-- COPYRIGHT -->
+    <!-- =========================
+         COPYRIGHT
+    ========================= -->
 
     <div class="copyright">
       © NDOORE
     </div>
+
 
   </footer>
 
