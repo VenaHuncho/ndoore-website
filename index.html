@@ -8,7 +8,7 @@
   <meta name="description" content="NDOORE — Official website.">
   <meta name="theme-color" content="#000000">
 
-  <!-- Font Awesome for social icons -->
+  <!-- Font Awesome Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -41,6 +41,7 @@
       overflow: hidden;
       background: #000;
     }
+
 
     /* =========================
        HEADER
@@ -121,8 +122,6 @@
       animation: blink 7s 3s infinite;
     }
 
-    /* Permanent subtle smile */
-
     .smile {
       position: absolute;
       left: 37%;
@@ -134,7 +133,10 @@
       pointer-events: none;
     }
 
-    /* Blink */
+
+    /* =========================
+       BLINK
+    ========================= */
 
     @keyframes blink {
       0%, 94%, 100% {
@@ -160,44 +162,65 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 25px 5%;
+      padding: 22px 5% 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
       z-index: 2;
     }
 
-    /* SOCIAL ICONS */
 
-    .socials {
+    /* =========================
+       ICON ROWS
+    ========================= */
+
+    .icon-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 28px;
+      flex-wrap: nowrap;
+      gap: 25px;
     }
 
-    .socials a {
+    .icon-row a {
       color: white;
       text-decoration: none;
-      font-size: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
       transition:
         opacity 0.3s,
         transform 0.3s;
     }
 
-    .socials a:hover {
-      opacity: 0.55;
+    .icon-row a:hover {
+      opacity: 0.5;
       transform: translateY(-2px);
     }
 
-    /* COPYRIGHT */
+
+    /* MUSIC + SOCIAL LABELS */
+
+    .row-label {
+      color: #555;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: -7px;
+    }
+
+
+    /* =========================
+       COPYRIGHT
+    ========================= */
 
     .copyright {
-      color: #aaa;
-      font-size: 11px;
+      color: #555;
+      font-size: 10px;
       letter-spacing: 1px;
-      text-align: center;
+      margin-top: 2px;
     }
 
 
@@ -229,16 +252,20 @@
       }
 
       footer {
-        padding: 20px 6%;
-        gap: 17px;
+        padding: 18px 5% 20px;
+        gap: 13px;
       }
 
-      .socials {
-        gap: 22px;
+      .icon-row {
+        gap: 19px;
       }
 
-      .socials a {
-        font-size: 22px;
+      .icon-row a {
+        font-size: 18px;
+      }
+
+      .row-label {
+        font-size: 7px;
       }
 
       .copyright {
@@ -248,17 +275,17 @@
 
 
     /* =========================
-       VERY SMALL PHONES
+       SMALL PHONES
     ========================= */
 
-    @media (max-width: 380px) {
+    @media (max-width: 390px) {
 
-      .socials {
-        gap: 17px;
+      .icon-row {
+        gap: 15px;
       }
 
-      .socials a {
-        font-size: 20px;
+      .icon-row a {
+        font-size: 16px;
       }
 
       nav {
@@ -272,6 +299,22 @@
 
 
     /* =========================
+       VERY SMALL PHONES
+    ========================= */
+
+    @media (max-width: 340px) {
+
+      .icon-row {
+        gap: 12px;
+      }
+
+      .icon-row a {
+        font-size: 14px;
+      }
+    }
+
+
+    /* =========================
        REDUCED MOTION
     ========================= */
 
@@ -280,6 +323,7 @@
         animation: none;
       }
     }
+
   </style>
 </head>
 
@@ -295,20 +339,22 @@
 
   <header>
 
-    <a class="logo" href="#">NDOORE</a>
+    <a class="logo" href="#">
+      NDOORE
+    </a>
 
     <nav>
 
-      <!-- CHANGE YOUR PRE-SAVE LINK HERE -->
+      <!-- CHANGE THIS LINK WHENEVER YOU HAVE A NEW PRE-SAVE -->
       <a
-        href="https://YOUR-PRE-SAVE-LINK-HERE.com"
+        href="https://YOUR-PRE-SAVE-LINK-HERE"
         target="_blank"
         rel="noopener noreferrer"
       >
         PRE-SAVE
       </a>
 
-      <!-- BOOKING EMAIL -->
+      <!-- BOOKING -->
       <a href="mailto:book@ndoore.com">
         BOOK
       </a>
@@ -320,7 +366,7 @@
 
 
   <!-- =========================
-       CENTER WORDMARK
+       NDOORE WORDMARK
   ========================= -->
 
   <section class="hero">
@@ -344,7 +390,148 @@
 
   <footer>
 
-    <div class="socials">
+
+    <!-- MUSIC PLATFORMS -->
+
+    <div class="row-label">
+      MUSIC
+    </div>
+
+    <div class="icon-row">
+
+
+      <!-- SPOTIFY -->
+      <a
+        href="https://open.spotify.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Spotify"
+      >
+        <i class="fa-brands fa-spotify"></i>
+      </a>
+
+
+      <!-- BOOMPLAY -->
+      <a
+        href="https://www.boomplay.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Boomplay"
+      >
+        <i class="fa-solid fa-play"></i>
+      </a>
+
+
+      <!-- YOUTUBE MUSIC -->
+      <a
+        href="https://music.youtube.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube Music"
+      >
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+
+      <!-- YOUTUBE -->
+      <a
+        href="https://youtube.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+      >
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+
+      <!-- MDUNDO -->
+      <a
+        href="https://mdundo.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Mdundo"
+      >
+        <i class="fa-solid fa-music"></i>
+      </a>
+
+
+      <!-- APPLE MUSIC -->
+      <a
+        href="https://music.apple.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Apple Music"
+      >
+        <i class="fa-brands fa-apple"></i>
+      </a>
+
+
+      <!-- AMAZON MUSIC -->
+      <a
+        href="https://music.amazon.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Amazon Music"
+      >
+        <i class="fa-brands fa-amazon"></i>
+      </a>
+
+
+      <!-- AUDIOMACK -->
+      <a
+        href="https://audiomack.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Audiomack"
+      >
+        <i class="fa-solid fa-headphones"></i>
+      </a>
+
+
+      <!-- SOUNDCLOUD -->
+      <a
+        href="https://soundcloud.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="SoundCloud"
+      >
+        <i class="fa-brands fa-soundcloud"></i>
+      </a>
+
+
+      <!-- EVEN -->
+      <a
+        href="https://even.biz/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="EVEN"
+      >
+        <i class="fa-solid fa-ticket"></i>
+      </a>
+
+    </div>
+
+
+
+    <!-- SOCIAL PLATFORMS -->
+
+    <div class="row-label">
+      SOCIAL
+    </div>
+
+    <div class="icon-row">
+
+
+      <!-- FACEBOOK -->
+      <a
+        href="https://facebook.com/iamndoore"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
 
       <!-- INSTAGRAM -->
       <a
@@ -368,50 +555,6 @@
       </a>
 
 
-      <!-- YOUTUBE -->
-      <a
-        href="https://youtube.com/@ndoore"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="YouTube"
-      >
-        <i class="fa-brands fa-youtube"></i>
-      </a>
-
-
-      <!-- SPOTIFY -->
-      <a
-        href="https://open.spotify.com/artist/YOUR-SPOTIFY-ID"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Spotify"
-      >
-        <i class="fa-brands fa-spotify"></i>
-      </a>
-
-
-      <!-- APPLE MUSIC -->
-      <a
-        href="https://music.apple.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Apple Music"
-      >
-        <i class="fa-brands fa-apple"></i>
-      </a>
-
-
-      <!-- SOUNDCLOUD -->
-      <a
-        href="https://soundcloud.com/YOUR-SOUNDCLOUD"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="SoundCloud"
-      >
-        <i class="fa-brands fa-soundcloud"></i>
-      </a>
-
-
       <!-- TIKTOK -->
       <a
         href="https://www.tiktok.com/@iamndoore"
@@ -425,7 +568,9 @@
     </div>
 
 
-    <!-- COPYRIGHT ONLY -->
+
+    <!-- COPYRIGHT -->
+
     <div class="copyright">
       © NDOORE
     </div>
