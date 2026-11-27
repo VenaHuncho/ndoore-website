@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +29,8 @@
     }
 
     /* PAGE */
-    html {
-      width: 100%;
-      min-height: 100%;
-      background: #000;
-      overscroll-behavior-y: auto;
-    }
-
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100%;
       background: #000;
@@ -43,10 +38,13 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html {
+      overscroll-behavior-y: auto;
+    }
+
     body {
       overflow-x: hidden;
       overflow-y: auto;
-      overscroll-behavior-y: auto;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -68,30 +66,97 @@
       width: 100%;
       padding: 30px 5%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      z-index: 2;
+      z-index: 10;
     }
 
-    nav {
+    /* MENU BUTTON */
+    .menu-button {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: transparent;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 35px;
-      width: 100%;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 12;
     }
 
-    nav a {
+    .menu-button span {
+      display: block;
+      width: 25px;
+      height: 1.5px;
+      background: #fff;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-button.active span:first-child {
+      transform: translateY(3.75px) rotate(45deg);
+    }
+
+    .menu-button.active span:last-child {
+      transform: translateY(-3.75px) rotate(-45deg);
+    }
+
+    /* MENU OVERLAY */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 8;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* SLIDING MENU */
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(340px, 85%);
+      height: 100vh;
+      height: 100dvh;
+      background: #0a0a0a;
+      padding: 110px 45px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      z-index: 11;
+    }
+
+    .menu-panel.active {
+      transform: translateX(0);
+    }
+
+    .menu-panel a {
       color: #fff;
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 3px;
+      font-size: 13px;
+      letter-spacing: 2.5px;
       transition: opacity 0.3s;
     }
 
-    nav a:hover {
+    .menu-panel a:hover {
       opacity: 0.5;
+    }
+
+    .menu-divider {
+      width: 100%;
+      height: 1px;
+      background: #292929;
+      margin: 5px 0;
     }
 
     /* CENTER WORDMARK */
@@ -164,22 +229,13 @@
       z-index: 2;
     }
 
-    /* FOOTER GROUPS */
-    .footer-links,
-    .platform-group {
-      display: contents;
+    /* SOCIAL ICONS */
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* ROW LABEL */
-    .row-label {
-      color: #555;
-      font-size: 8px;
-      letter-spacing: 2px;
-      text-align: center;
-      margin-bottom: -7px;
-    }
-
-    /* ICON ROW */
     .icon-row {
       display: flex;
       align-items: center;
@@ -205,66 +261,6 @@
       transform: translateY(-2px);
     }
 
-    /* BOOMPLAY */
-    .boomplay-icon {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 23px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    /* YOUTUBE MUSIC */
-    .youtube-music-icon {
-      position: relative;
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #fff;
-      border-radius: 50%;
-    }
-
-    .youtube-music-icon::after {
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 6px solid #fff;
-      margin-left: 2px;
-    }
-
-    /* MDUNDO */
-    .mdundo-icon {
-      font-size: 20px;
-    }
-
-    /* AUDIOMACK */
-    .audiomack-icon {
-      width: 27px;
-      height: 23px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-    }
-
-    .audiomack-icon svg {
-      display: block;
-      width: 27px;
-      height: 23px;
-      overflow: visible;
-    }
-
-    .audiomack-wave {
-      fill: none;
-      stroke: #fff;
-      stroke-width: 3.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
     /* COPYRIGHT */
     .copyright {
       color: #555;
@@ -279,17 +275,17 @@
         padding: 24px 6%;
       }
 
-      nav {
-        gap: 18px;
-      }
-
-      nav a {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-      }
-
       .artist-name {
         font-size: 19vw;
+      }
+
+      .menu-panel {
+        padding: 100px 35px 35px;
+        gap: 27px;
+      }
+
+      .menu-panel a {
+        font-size: 12px;
       }
 
       footer {
@@ -305,29 +301,6 @@
         width: 22px;
         height: 22px;
         font-size: 18px;
-      }
-
-      .boomplay-icon {
-        font-size: 20px;
-      }
-
-      .youtube-music-icon {
-        width: 20px;
-        height: 20px;
-      }
-
-      .audiomack-icon {
-        width: 23px;
-        height: 21px;
-      }
-
-      .audiomack-icon svg {
-        width: 23px;
-        height: 21px;
-      }
-
-      .row-label {
-        font-size: 7px;
       }
 
       .copyright {
@@ -346,24 +319,6 @@
         height: 20px;
         font-size: 16px;
       }
-
-      .boomplay-icon {
-        font-size: 18px;
-      }
-
-      .youtube-music-icon {
-        width: 18px;
-        height: 18px;
-        border-width: 1.5px;
-      }
-
-      nav {
-        gap: 14px;
-      }
-
-      nav a {
-        font-size: 9px;
-      }
     }
 
     /* VERY SMALL PHONES */
@@ -376,10 +331,6 @@
         width: 18px;
         height: 18px;
         font-size: 14px;
-      }
-
-      .boomplay-icon {
-        font-size: 16px;
       }
     }
 
@@ -395,32 +346,10 @@
         gap: 0;
       }
 
-      /* MUSIC + SOCIAL ON LEFT */
       .footer-links {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
-      }
-
-      .platform-group {
-        display: flex;
-        align-items: center;
         justify-content: flex-start;
-        gap: 12px;
       }
 
-      /* SMALL LABELS */
-      .row-label {
-        width: 42px;
-        flex-shrink: 0;
-        text-align: left;
-        font-size: 7px;
-        letter-spacing: 1.5px;
-        margin-bottom: 0;
-      }
-
-      /* SMALLER ICON ROWS */
       .icon-row {
         justify-content: flex-start;
         gap: 13px;
@@ -432,38 +361,12 @@
         font-size: 16px;
       }
 
-      .boomplay-icon {
-        font-size: 17px;
-      }
-
-      .youtube-music-icon {
-        width: 17px;
-        height: 17px;
-        border-width: 1.5px;
-      }
-
-      .audiomack-icon {
-        width: 19px;
-        height: 19px;
-      }
-
-      .audiomack-icon svg {
-        width: 19px;
-        height: 19px;
-      }
-
-      .mdundo-icon {
-        font-size: 16px;
-      }
-
-      /* COPYRIGHT ON RIGHT */
       .copyright {
         font-size: 8px;
         letter-spacing: 1px;
         margin-top: 0;
         margin-left: auto;
         text-align: right;
-        align-self: center;
         white-space: nowrap;
       }
     }
@@ -472,20 +375,6 @@
     @media (max-width: 600px) and (orientation: landscape) {
       footer {
         padding: 7px 4%;
-      }
-
-      .footer-links {
-        gap: 5px;
-      }
-
-      .platform-group {
-        gap: 8px;
-      }
-
-      .row-label {
-        width: 35px;
-        font-size: 6px;
-        letter-spacing: 1px;
       }
 
       .icon-row {
@@ -498,25 +387,6 @@
         font-size: 14px;
       }
 
-      .boomplay-icon {
-        font-size: 15px;
-      }
-
-      .youtube-music-icon {
-        width: 15px;
-        height: 15px;
-      }
-
-      .audiomack-icon {
-        width: 17px;
-        height: 17px;
-      }
-
-      .audiomack-icon svg {
-        width: 17px;
-        height: 17px;
-      }
-
       .copyright {
         font-size: 7px;
       }
@@ -526,6 +396,12 @@
     @media (prefers-reduced-motion: reduce) {
       .eyes {
         animation: none;
+      }
+
+      .menu-panel,
+      .menu-overlay,
+      .menu-button span {
+        transition: none;
       }
     }
   </style>
@@ -538,39 +414,64 @@
   <!-- HEADER -->
   <header>
 
-    <nav aria-label="Main navigation">
-
-      <!-- MOFARITY -->
-      <a
-        href="https://mofarity.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        MOFARITY
-      </a>
-
-      <!-- BBO BEATS -->
-      <a
-        href="https://www.beatstars.com/bbobeats"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        BBO BEATS
-      </a>
-
-      <!-- BBO RECORDS -->
-      <a href="mailto:info@bborecords.com">
-        BBO RECORDS
-      </a>
-
-      <!-- CONTACT -->
-      <a href="mailto:contact@ndoore.com">
-        CONTACT
-      </a>
-
-    </nav>
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="menuPanel"
+    >
+      <span></span>
+      <span></span>
+    </button>
 
   </header>
+
+  <!-- MENU OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- SLIDING MENU -->
+  <nav class="menu-panel" id="menuPanel" aria-label="Main navigation">
+
+    <a
+      href="https://www.bborecords.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      BBO RECORDS
+    </a>
+
+    <a
+      href="https://youtube.com/@venahuncho"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      VENA HUNCHO
+    </a>
+
+    <a
+      href="https://mofarity.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      MOFARITY
+    </a>
+
+    <a
+      href="https://www.beatstars.com/bbobeats"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      BBO BEATS
+    </a>
+
+    <div class="menu-divider"></div>
+
+    <a href="mailto:contact@ndoore.com">
+      CONTACT
+    </a>
+
+  </nav>
 
   <!-- CENTER NDOORE WORDMARK -->
   <section class="hero">
@@ -587,193 +488,50 @@
   <!-- FOOTER -->
   <footer>
 
+    <!-- SOCIAL ICONS -->
     <div class="footer-links">
 
-      <!-- MUSIC -->
-      <div class="platform-group">
+      <div class="icon-row">
 
-        <div class="row-label">
-          MUSIC
-        </div>
+        <!-- FACEBOOK -->
+        <a
+          href="https://facebook.com/iamndoore"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
 
-        <div class="icon-row">
+        <!-- INSTAGRAM -->
+        <a
+          href="https://instagram.com/iamndoore"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
 
-          <!-- SPOTIFY -->
-          <a
-            href="https://open.spotify.com/artist/0mdcIrxzcoOjRuGbWEIKIo"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Spotify"
-          >
-            <i class="fa-brands fa-spotify"></i>
-          </a>
+        <!-- X -->
+        <a
+          href="https://x.com/iamndoore"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
 
-          <!-- BOOMPLAY -->
-          <a
-            href="https://www.boomplay.com/share/artist/EQKBmno9PdzzwH0OU6bk9ds_"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Boomplay"
-          >
-            <span class="boomplay-icon">B</span>
-          </a>
-
-          <!-- YOUTUBE MUSIC -->
-          <a
-            href="https://music.youtube.com/channel/UCQOl1PFR3-wCMKnwpA7-fnA"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube Music"
-          >
-            <span class="youtube-music-icon"></span>
-          </a>
-
-          <!-- YOUTUBE -->
-          <a
-            href="https://youtube.com/channel/UCQOl1PFR3-wCMKnwpA7-fnA"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-          >
-            <i class="fa-brands fa-youtube"></i>
-          </a>
-
-          <!-- MDUNDO -->
-          <a
-            href="https://mdundo.com/a/mofarity"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Mdundo"
-          >
-            <i class="fa-solid fa-download mdundo-icon"></i>
-          </a>
-
-          <!-- APPLE MUSIC -->
-          <a
-            href="https://music.apple.com/us/artist/mofarity/6797105578"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Apple Music"
-          >
-            <i class="fa-brands fa-apple"></i>
-          </a>
-
-          <!-- AMAZON MUSIC -->
-          <a
-            href="https://music.amazon.com/artists/B0HCKJP3P3/mofarity"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Amazon Music"
-          >
-            <i class="fa-brands fa-amazon"></i>
-          </a>
-
-          <!-- AUDIOMACK -->
-          <a
-            href="https://audiomack.com/mofarity"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Audiomack"
-          >
-            <span class="audiomack-icon">
-              <svg
-                viewBox="0 0 27 23"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  class="audiomack-wave"
-                  d="
-                    M 1 13
-                    L 5 13
-                    L 8 10
-                    L 10 15
-                    L 13 7
-                    L 16 17
-                    L 19 4
-                    L 21 12
-                    L 23 9
-                    L 26 9
-                  "
-                />
-              </svg>
-            </span>
-          </a>
-
-          <!-- SOUNDCLOUD -->
-          <a
-            href="https://soundcloud.com/mofarity"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="SoundCloud"
-          >
-            <i class="fa-brands fa-soundcloud"></i>
-          </a>
-
-          <!-- EVEN -->
-          <a
-            href="https://www.even.biz/artists/mofarity"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="EVEN"
-          >
-            <i class="fa-solid fa-ticket"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- SOCIAL -->
-      <div class="platform-group">
-
-        <div class="row-label">
-          SOCIAL
-        </div>
-
-        <div class="icon-row">
-
-          <!-- FACEBOOK -->
-          <a
-            href="https://facebook.com/iamndoore"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-
-          <!-- INSTAGRAM -->
-          <a
-            href="https://instagram.com/iamndoore"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <!-- X -->
-          <a
-            href="https://x.com/iamndoore"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X"
-          >
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-
-          <!-- TIKTOK -->
-          <a
-            href="https://www.tiktok.com/@iamndoore"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok"
-          >
-            <i class="fa-brands fa-tiktok"></i>
-          </a>
-
-        </div>
+        <!-- TIKTOK -->
+        <a
+          href="https://www.tiktok.com/@iamndoore"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+        >
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
 
       </div>
 
@@ -787,6 +545,47 @@
   </footer>
 
 </main>
+
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const menuPanel = document.getElementById("menuPanel");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  function toggleMenu() {
+    const isOpen = menuPanel.classList.toggle("active");
+
+    menuButton.classList.toggle("active", isOpen);
+    menuOverlay.classList.toggle("active", isOpen);
+
+    menuButton.setAttribute("aria-expanded", isOpen);
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+  }
+
+  function closeMenu() {
+    menuPanel.classList.remove("active");
+    menuButton.classList.remove("active");
+    menuOverlay.classList.remove("active");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open menu");
+  }
+
+  menuButton.addEventListener("click", toggleMenu);
+  menuOverlay.addEventListener("click", closeMenu);
+
+  menuPanel.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>
 
 </body>
 </html>
